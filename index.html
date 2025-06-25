@@ -48,6 +48,7 @@
 
     <title>Diamond Park | Ilorin</title>
     <link rel="stylesheet" href="src/styles/index.css">
+    <script type="module" src="src/scripts/index.js"></script>
   </head>
   <body>
     <nav class="navbar" id="main-navbar">
@@ -211,9 +212,44 @@
             ></iframe>
           </div>
 
+
+           <!-- <div class="gallery-media">
+            <iframe
+              class="gallery-video"
+              src=""
+              title="Fun Times at Diamond Park"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+           <div class="gallery-media">
+            <iframe
+              class="gallery-video"
+              src=""
+              title="Fun Times at Diamond Park"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+           <div class="gallery-media">
+            <iframe
+              class="gallery-video"
+              src=""
+              title="Fun Times at Diamond Park"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div> -->
+<!-- images -->
           <div class="gallery-media">
             <img
-              src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/285512397_113140618078332_3013100365502618825_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHr8yJSAdSlKMOqZ8-sPMmWjCNNI2pIGYGMI00jakgZgX9oAImb6vQbNqtUK810_a8HFAjhv29mTOnnZcb9QiiI&_nc_ohc=eYMJ_gsDAEMQ7kNvwHecoxW&_nc_oc=Adn6FAoSgxDqRDcwcuUetHCOnTA242Ef2NIBpgcumKQc1dAAjDJS4GmHLJ_I2CkjHMY&_nc_zt=23&_nc_ht=scontent-los2-1.xx&_nc_gid=pMtrtJp97vKuyczn7TFoFw&oh=00_AfNUJPrUTYXFun96nfk86zXuQ1Z7I3oBoRj4jVT-k-cHAA&oe=68549CC5"
+              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nonUrywpsDwAivjzoTNiUIxphy6MGT0aX7iloLEYCU6fAbmibFqFrx3HsMQ14RTlwvlAZ8tT4r6tMqt4EZ9xgVvko13vuDRFp5dQTKjr7MTbPfMV4vPL-NCMLqN-nFhFL61O5g8=s680-w680-h510-rw"
               alt="Children enjoying the play area at Diamond Park Ilorin"
               class="gallery-img"
               loading="lazy"
@@ -240,7 +276,36 @@
           </div>
           <div class="gallery-media">
             <img
-              src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/494049660_686354077477266_7203381456373166316_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHdXxUvTyYWQrc6IafZDN90WwIzT329oDpbAjNPfb2gOoiOOJfth_Ef7KQGvW4HfmtCRGJF7aLy-yJXXThQs7W_&_nc_ohc=kdfIE-Fd8mAQ7kNvwHzx8e7&_nc_oc=Adl2FVdo_DyZTgphLPtHPvog-3Z_sqIJOEuYkfrmjofmTbyG-h0zhbJheiXANAGITEc&_nc_zt=23&_nc_ht=scontent-los2-1.xx&_nc_gid=pMtrtJp97vKuyczn7TFoFw&oh=00_AfP8nibcuK6ZOEsn1p7x-wGGZ3cp6Sj9ukUpz4Rg4ZUuaQ&oe=68548E54"
+              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPGHnsbWfdfrsfy_4YhQLI-lTg_J92cCz1Bm0VoHi0H4sjE2wQPqpfLQBBNqLM4wyPDoM5xreZbX21xgskPEQPqJ-MnQ0qQqkdTL_sOdYg2p_6jXnUP6Bnqj2P6vevq5x3fJmN=s680-w680-h510-rw"
+              alt="A beautifully set up event space at Diamond Park Ilorin"
+              class="gallery-img"
+              loading="lazy"
+              onclick="openImageModal(this.src, this.alt)"
+            />
+          </div>
+
+
+          <div class="gallery-media">
+            <img
+              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqp0SWQB3NvXKiXiHfNjgnJwbyUe6yPQ6p4b-rmgHtO9Ea0Ap5QyRuEqaNwQoXDByZRHBWt8jZdCtt4FaPfsLZSmTxCwnOwj2ewPLI-e2j54wgOoWkKlll0RnMJSvjhY-ABLfX_-Q=s680-w680-h510-rw"
+              alt="A beautifully set up event space at Diamond Park Ilorin"
+              class="gallery-img"
+              loading="lazy"
+              onclick="openImageModal(this.src, this.alt)"
+            />
+          </div>
+          <div class="gallery-media">
+            <img
+              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npIrho0-hF-MBD273Dtpn5xQDURJ6mPudXi_cLPCo2liyy1TrMBX69yB7Yr-S0m-FoW8-0X48D7OB0v-jUXphgn2eGEkuD495_W2j0wkmBXWEJrsEYdlBKUzOrKjympqJ_8Ht1TMw=s680-w680-h510-rw"
+              alt="A beautifully set up event space at Diamond Park Ilorin"
+              class="gallery-img"
+              loading="lazy"
+              onclick="openImageModal(this.src, this.alt)"
+            />
+          </div>
+          <div class="gallery-media">
+            <img
+              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrDsArzlMLcm_KqKUjn_6-fFDURqF8ULEqtTe7N0YwTT7VplwrrkGz7K3MtimCpnNOjfECTHd2JA9jio2ZdQv3-1xeqXnsCP0atnOx6rREC3Vnec8yKATQ608lKh4hFpX1sTEE=s680-w680-h510-rw"
               alt="A beautifully set up event space at Diamond Park Ilorin"
               class="gallery-img"
               loading="lazy"

@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getFirestore,
   collection,
-  addDoc
+  addDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -32,12 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const amount = 500 * people * 100;
 
     const handler = PaystackPop.setup({
-      key: "pk_test_6c6351527c0b5653a2fce604953b766358b8e739",
+      key: "pk_test_6c6351527c0b5653a2fce604953b766358b8e739", // Replace with live key in production
       email,
       amount,
       currency: "NGN",
       callback: function (response) {
         const ref = response.reference;
+
+        // Show ticket
         const ticketDiv = document.getElementById("ticket");
         ticketDiv.innerHTML = `
           <div id="ticketCard" style="padding: 20px; border: 2px dashed #000; background: #fff; width: 320px; margin: 0 auto; text-align:center; border-radius: 12px;">
@@ -55,10 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
           <button onclick="downloadTicketImage()">📥 Download Ticket as Image</button>
         `;
 
+        // ✅ Save to Firestore with correct timestamp
         addDoc(collection(db, "bookings"), {
-          name, email, phone, type, people, date, time, ref,
-          timestamp: new Date().toISOString()
-        }).then(() => console.log("Saved to Firebase ✅"));
+          name,
+          email,
+          phone,
+          type,
+          people,
+          date,
+          time,
+          ref,
+          entered: false,
+          timestamp: serverTimestamp()
+        }).then(() => {
+          console.log("✅ Booking saved to Firestore.");
+        }).catch((err) => {
+          console.error("❌ Error saving to Firestore:", err);
+        });
       },
       onClose: function () {
         alert("Payment popup closed.");
@@ -68,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handler.openIframe();
   });
 
+  // Ticket image download
   window.downloadTicketImage = function () {
     const ticketDiv = document.getElementById("ticketCard");
     html2canvas(ticketDiv).then((canvas) => {
