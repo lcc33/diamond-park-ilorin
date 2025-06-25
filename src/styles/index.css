@@ -142,12 +142,9 @@ p {
   color: var(--primary);
   letter-spacing: -0.5px;
   text-transform: uppercase;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
-.navbar-logo span:hover {
-  transform: translateY(-5px) scale(1.02);
-  
-}
+
 .navbar-links {
   display: flex;
   gap: 2.5rem; 
