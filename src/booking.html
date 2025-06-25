@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="assets/Background.jpg" />
+    <title>Book Your Visit | Diamond Park Ilorin</title>
+    <script type="module" src="scripts/booking.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://js.paystack.co/v2/inline.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="styles/booking.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎟 Book Your Visit</h1>
+      <p class="notice">
+        ⚠️ If you book and don't show up, your ticket becomes invalid. No
+        refunds.
+      </p>
+      <form id="bookingForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="tel" id="phone" placeholder="Phone Number" required />
+
+        <label for="date">Date of Visit:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="time">Preferred Time Slot:</label>
+        <select id="time" name="time" required>
+          <option value="">Select a time slot</option>
+          <option value="10:00 AM">10:00 AM</option>
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="4:00 PM">4:00 PM</option>
+        </select>
+
+        <label for="type">Booking Type:</label>
+        <select id="type" required>
+          <option value="">Select Booking Type</option>
+          <option value="individual">Individual - ₦500</option>
+          <option value="group">Group - ₦500 per person</option>
+        </select>
+
+        <input
+          type="number"
+          id="people"
+          placeholder="Number of People"
+          value="1"
+          min="1"
+          required
+        />
+        <button type="submit">Pay & Generate Ticket</button>
+      </form>
+      <div id="ticket" style="margin-top: 2rem"></div>
+    </div>
+  </body>
+</html>
