@@ -1,47 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diamond Park Admin</title>
-  <link rel="shortcut icon" href="assets/Background.jpg" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles/admin.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diamond Park Admin</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/admin.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/Background.jpg" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="login" class="login-section">
+        <div class="login-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h1 class="login-title">Admin Portal</h1>
+        <p class="login-subtitle">Diamond Park Ilorin Management System</p>
+        <button id="googleLogin" class="google-btn">
+          <div class="google-icon"></div>
+          Sign in with Google
+        </button>
+      </div>
 
-  <!-- Login Page -->
-  <div id="login">
-    <h2>Admin Login</h2>
-    <button id="googleLogin">🔐 Sign in with Google</button>
-  </div>
+      <div id="dashboard" class="dashboard-section">
+        <div class="dashboard-header">
+          <h1 class="dashboard-title">
+            <i class="fas fa-chart-line"></i>
+            Booking Management
+          </h1>
+          <button id="signOut" class="sign-out-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Sign Out
+          </button>
+        </div>
 
-  <!-- Dashboard -->
-  <div id="dashboard">
-    <button id="signOut">🔓 Sign Out</button>
-    <h2>🎟 Booking Management</h2>
-    <table id="bookingTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Type</th>
-          <th>People</th>
-          <th>Time</th>
-          <th>Entered</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+        <div class="dashboard-content">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" id="totalBookings">0</div>
+              <div class="stat-label">Total Bookings</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="todayBookings">0</div>
+              <div class="stat-label">Today's Bookings</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="checkedIn">0</div>
+              <div class="stat-label">Checked In</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="totalRevenue">₦0</div>
+              <div class="stat-label">Total Revenue</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="todayRevenue">₦0</div>
+              <div class="stat-label">Today's Revenue</div>
+            </div>
+          </div>
 
-  <!-- Firebase & Admin Logic -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+          <div class="table-container">
+            <div class="table-header">
+              <h2 class="table-title">Recent Bookings</h2>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search bookings..."
+                id="searchInput"
+              />
+            </div>
 
-  <script type="module" src="scripts/admin.js"></script>
-</body>
+            <div class="table-wrapper">
+              <table id="bookingTable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>People</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="9" class="empty-state">
+                      <i class="fas fa-inbox"></i>
+                      <p>No bookings found</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+    <script type="module" src="scripts/admin.js"></script>
+  </body>
 </html>

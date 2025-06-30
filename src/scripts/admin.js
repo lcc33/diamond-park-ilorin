@@ -33,6 +33,13 @@ const adminEmail = "bryanedwarding@gmail.com";
 
 const loginSection = document.getElementById("login");
 const dashboardSection = document.getElementById("dashboard");
+const totalBookingsEl = document.getElementById("totalBookings");
+const todayBookingsEl = document.getElementById("todayBookings");
+const checkedInEl = document.getElementById("checkedIn");
+const totalRevenueEl = document.getElementById("totalRevenue");
+const todayRevenueEl = document.getElementById("todayRevenue");
+
+let allBookings = [];
 
 // Handle sign-in
 const loginBtn = document.getElementById("googleLogin");
@@ -84,8 +91,12 @@ function loadBookings() {
   onSnapshot(q, (snapshot) => {
     const tbody = document.querySelector("#bookingTable tbody");
     tbody.innerHTML = "";
+    allBookings = [];
+
     snapshot.forEach((docSnap) => {
       const data = docSnap.data();
+      const id = docSnap.id;
+      allBookings.push({ id, ...data });
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${data.name}</td>
@@ -96,13 +107,47 @@ function loadBookings() {
         <td>${data.date || ""} ${data.time || ""}</td>
         <td>${data.entered ? "✅" : "❌"}</td>
         <td>
-          <button class="btn" onclick="markEntered('${docSnap.id}')">Check In</button>
+          <button class="btn" onclick="markEntered('${id}')">Check In</button>
           <button class="btn btn-danger" onclick="notify('${data.email}')">Notify</button>
         </td>
       `;
       tbody.appendChild(tr);
     });
+
+    updateStats();
   });
+}
+
+function updateStats() {
+  totalBookingsEl.textContent = allBookings.length;
+
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const todayEnd = new Date();
+  todayEnd.setHours(23, 59, 59, 999);
+
+  const todayBookings = allBookings.filter((booking) => {
+    if (booking.timestamp?.toDate) {
+      const date = booking.timestamp.toDate();
+      return date >= todayStart && date <= todayEnd;
+    }
+    return false;
+  });
+
+  todayBookingsEl.textContent = todayBookings.length;
+
+  const checkedInBookings = allBookings.filter((b) => b.entered);
+  checkedInEl.textContent = checkedInBookings.length;
+
+  const perPersonRate = 500;
+
+  const totalRevenue = checkedInBookings.reduce((sum, b) => sum + (b.people || 0) * perPersonRate, 0);
+  totalRevenueEl.textContent = `₦${totalRevenue.toLocaleString()}`;
+
+  const todayCheckedIn = todayBookings.filter((b) => b.entered);
+  const todayRevenue = todayCheckedIn.reduce((sum, b) => sum + (b.people || 0) * perPersonRate, 0);
+  todayRevenueEl.textContent = `₦${todayRevenue.toLocaleString()}`;
 }
 
 window.markEntered = async function (id) {
