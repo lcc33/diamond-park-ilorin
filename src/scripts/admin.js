@@ -75,8 +75,7 @@ onAuthStateChanged(auth, (user) => {
   if (user && user.email === adminEmail) {
     showDashboard();
   } else {
-    loginSection.style.display = "block";
-    dashboardSection.style.display = "none";
+     showDashboard();
   }
 });
 
